@@ -1,0 +1,39 @@
+<!doctype HTML>
+<html>
+<head>
+    <script type="text/javascript" src="../lib/jquery-1.11.1.min.js"></script>
+    <title>Project euler 001</title>
+</head>
+
+<body>
+<div id="description">
+<p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.</p>
+<p>Find the sum of all the multiples of 3 or 5 below 1000.</p>
+</div>
+<div>
+<div id="answer"></div>
+</div>
+
+<button>Click for answer</button>
+
+<script>
+function multiples() {
+    var max = 1000,
+        resultado = 0;
+    for (i=max ; i-- ; ) {
+        if (i%3==0 || i%5==0) {
+            resultado+=i;
+        }
+    };
+    return resultado;
+}
+
+$(":button").click(function() {
+    var res = multiples();
+    $('#answer').html('The answer is '+res);
+});
+
+</script>
+
+</body>
+</html>
