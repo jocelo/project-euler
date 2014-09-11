@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="../lib/jquery-1.11.1.min.js"></script>
+    <title>Project euler 003</title>
+</head>
+
+<body>
+<div id="description">
+<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
+<p>What is the largest prime factor of the number 600851475143 ?</p>
+</div>
+<div>
+<div id="answer"></div>
+</div>
+
+<button>Click for answer</button>
+
+<script>
+var primeFactor = {};
+
+primeFactor.get = function( top ) {
+    var factores = [],
+        maxValue=0;
+
+    for (var i=1 ; i<=top ; i++) {
+        if (top%i==0) {
+            top=top/i;
+            factores.push(i);
+            maxValue = maxValue<=i ? i : maxValue;
+            i=1;
+        }
+        if (top==1) {
+            break;
+        }
+        if (i==10000) {
+            break;
+        }
+    }
+    console.log('Prime factors are:');
+    console.log(factores);
+    return maxValue;
+};
+
+$(":button").click(function() {
+    var res = primeFactor.get(600851475143);
+    $('#answer').html('The answer is '+res);
+});
+
+</script>
+
+</body>
+</html>
