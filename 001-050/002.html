@@ -1,4 +1,4 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <script type="text/javascript" src="../lib/jquery-1.11.1.min.js"></script>
@@ -18,19 +18,24 @@
 <button>Click for answer</button>
 
 <script>
-function multiples() {
-    var max = 1000,
-        resultado = 0;
-    for (i=max ; i-- ; ) {
-        if (i%3==0 || i%5==0) {
-            resultado+=i;
-        }
-    };
-    return resultado;
-}
+var fibbonacci = {};
+
+fibbonacci.calculate = function( top ) {
+    var serie = [1,2],
+        value=3,
+        total=2;
+
+    while (value<top) {
+        serie.push(value);
+        total += (value%2==0) ? value : 0 ;
+        var value = serie[serie.length-2] + serie[serie.length-1];
+    }
+    console.log(serie);
+    return total;
+};
 
 $(":button").click(function() {
-    var res = multiples();
+    var res = fibbonacci.calculate(4000000);
     $('#answer').html('The answer is '+res);
 });
 
